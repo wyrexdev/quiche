@@ -441,6 +441,11 @@ pub extern "C" fn quiche_config_set_disable_dcid_reuse(
 }
 
 #[no_mangle]
+pub extern "C" fn quiche_config_get_ssl_ctx(config: &mut Config) -> *mut c_void {
+    config.tls_ctx.as_ptr() as *mut c_void
+}
+
+#[no_mangle]
 pub extern "C" fn quiche_config_set_ticket_key(
     config: &mut Config, key: *const u8, key_len: size_t,
 ) -> c_int {

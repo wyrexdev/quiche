@@ -283,6 +283,8 @@ void quiche_config_set_disable_dcid_reuse(quiche_config *config, bool v);
 // Configures the session ticket key material.
 int quiche_config_set_ticket_key(quiche_config *config, const uint8_t *key, size_t key_len);
 
+void *quiche_config_get_ssl_ctx(quiche_config *config);
+
 // Frees the config object.
 void quiche_config_free(quiche_config *config);
 
