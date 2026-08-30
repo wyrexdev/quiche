@@ -60,7 +60,7 @@ struct SSL_METHOD {
 
 #[allow(non_camel_case_types)]
 #[repr(transparent)]
-struct SSL_CTX {
+pub(crate) struct SSL_CTX {
     _unused: c_void,
 }
 
@@ -129,7 +129,7 @@ pub static QUICHE_EX_DATA_INDEX: LazyLock<c_int> = LazyLock::new(|| unsafe {
     SSL_get_ex_new_index(0, ptr::null(), ptr::null(), ptr::null(), ptr::null())
 });
 
-pub struct Context(NonNull<SSL_CTX>);
+pub struct Context(pub NonNull<SSL_CTX>);
 
 impl Context {
     // Note: some vendor-specific methods are implemented in the boringssl
