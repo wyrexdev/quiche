@@ -599,6 +599,10 @@ impl Handshake {
         self.ptr.as_ptr()
     }
 
+    pub(crate) fn as_raw_ssl(&self) -> *mut c_void {
+        self.ptr.as_ptr() as *mut c_void
+    }
+
     fn as_mut_ptr(&mut self) -> *mut SSL {
         self.ptr.as_ptr()
     }

@@ -285,6 +285,11 @@ int quiche_config_set_ticket_key(quiche_config *config, const uint8_t *key, size
 
 void *quiche_config_get_ssl_ctx(quiche_config *config);
 
+// A QUIC connection.
+typedef struct quiche_conn quiche_conn;
+
+void *quiche_conn_get_ssl(quiche_conn *conn);
+
 // Frees the config object.
 void quiche_config_free(quiche_config *config);
 
@@ -295,9 +300,6 @@ int quiche_header_info(const uint8_t *buf, size_t buf_len, size_t dcil,
                        uint8_t *scid, size_t *scid_len,
                        uint8_t *dcid, size_t *dcid_len,
                        uint8_t *token, size_t *token_len);
-
-// A QUIC connection.
-typedef struct quiche_conn quiche_conn;
 
 // Creates a new server-side connection.
 quiche_conn *quiche_accept(const uint8_t *scid, size_t scid_len,

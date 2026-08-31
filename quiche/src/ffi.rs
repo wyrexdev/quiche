@@ -446,6 +446,11 @@ pub extern "C" fn quiche_config_get_ssl_ctx(config: &mut Config) -> *mut c_void 
 }
 
 #[no_mangle]
+pub extern "C" fn quiche_conn_get_ssl(conn: &mut Connection) -> *mut c_void {
+    conn.handshake.as_raw_ssl()
+}
+
+#[no_mangle]
 pub extern "C" fn quiche_config_set_ticket_key(
     config: &mut Config, key: *const u8, key_len: size_t,
 ) -> c_int {
